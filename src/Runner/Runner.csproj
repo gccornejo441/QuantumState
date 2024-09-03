@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\busyIndicator.svg" />
+    <None Remove="Assets\globe.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="20.1.1" />
+    <PackageReference Include="ReactiveUI.WPF" Version="20.1.1" />
+    <PackageReference Include="SharpVectors.Wpf" Version="1.8.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UnitStatusBar\QuantumState.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\busyIndicator.svg" />
+    <Resource Include="Assets\globe.svg" />
+  </ItemGroup>
+
+</Project>

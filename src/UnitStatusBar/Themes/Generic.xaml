@@ -1,0 +1,48 @@
+<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:QuantumState"
+	xmlns:svg="http://sharpvectors.codeplex.com/runtime/"
+	xmlns:svgc="http://sharpvectors.codeplex.com/svgc/">
+
+	<Style TargetType="{x:Type local:UnitStatusBar}">
+		<Setter Property="MinHeight" Value="23" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type local:UnitStatusBar}">
+					<Border
+						Height="30"
+						Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}">
+						<DockPanel>
+							<Image
+								x:Name="StatusImage"
+								Width="15"
+								Height="15"
+								Margin="5,0,5,5"
+								Source="{svgc:SvgImage Source='pack://application:,,,/QuantumState;component/Assets/Icons/globe.svg'}" />
+							<TextBlock
+								x:Name="StatusMessage"
+								Margin="5,0,5,5"
+								VerticalAlignment="Center"
+								DockPanel.Dock="Left"
+								Foreground="White"
+								Text="{Binding Path=StatusMessage, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+						</DockPanel>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsBusy" Value="True">
+							<Setter TargetName="StatusImage" Property="Source" Value="{svgc:SvgImage Source='pack://application:,,,/QuantumState;component/Assets/Icons/busyIndicator.svg'}" />
+						</Trigger>
+
+						<Trigger Property="IsBusy" Value="True">
+							<Setter TargetName="StatusMessage" Property="Foreground" Value="Red" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
